@@ -53,6 +53,7 @@ def SRTM_dem_make(dem_loc_size, SRTM1_or3 = 'SRTM3', water_mask_resolution = Non
     import numpy.ma as ma
     import geopy
     from geopy.distance import geodesic
+    from srtm_dem_tools.water_bodies import water_pixel_masker
     #import os 
     #plt.switch_backend('agg')                                                                       # with this backend, no windows are created during figure creation.                 
     
@@ -300,7 +301,8 @@ def SRTM_dem_make_batch(list_dems,  SRTM1_or3 = 'SRTM3', water_mask_resolution =
             list_dems_with_dem[n_dem]['lons_mg'] = lons                                                                                     # cont'd
             list_dems_with_dem[n_dem]['lats_mg'] = lats                                                                                     # cont'd
                     
-        except:
+        except Exception as e:
+            print(e)
             print(f'Failed to create DEM {n_dem} but continuing to the next DEM.  ')                                                                                    # print warning message if the try statement fails.  
                 
     return list_dems_with_dem
