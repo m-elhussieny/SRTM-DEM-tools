@@ -189,7 +189,7 @@ def load_GSHHS_coastlines(gshhs_dir, resolution = 'i', bbox = None, level = '1')
                         (bbox['east'], bbox['north']),
                         (bbox['west'], bbox['north'])])
         
-    shape_file = str(gshhs_dir / f"{resolution}" / f"GSHHS_{resolution}_L{level}.shp")
+    shape_file = f"{gshhs_dir}/{resolution}/GSHHS_{resolution}_L{level}.shp")
     sf = shapefile.Reader(shape_file)
     n_landmasses = len(sf.shapes())
 
